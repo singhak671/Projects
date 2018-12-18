@@ -1,0 +1,47 @@
+<body>
+
+<form name="registration" style="margin-left:35%;margin-top: 2%;" >
+    <br><br>
+
+    <h1 style="color: darkslategray">Login</h1><br><br>
+
+    <div >
+        E-Mail :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="email" name="email" ng-model="loginData.email" placeholder="Email Address*" ng-pattern="/^([a-zA-Z0-9_\-\./]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,4})$/" ng-maxlength="30" required>
+        <span ng-show="registration.email.$touched && registration.email.$error.required" style="color:red">Email is required.</span>
+        <span ng-show="registration.email.$dirty && registration.email.$error.pattern" style="color:red">The Email Id is invalid.</span>
+        <span style="color:red" ng-show="registration.email.$error.maxlength">It must be up to 30 characters</span><br><br><br> 
+    </div>
+                    
+                          
+    <div >
+        Password:&nbsp;&nbsp;&nbsp;&nbsp;<input type="password"  name="password" placeholder="Password*" ng-model="loginData.password" ng-pattern="/^\S*$/" ng-minlength="8" ng-maxlength="16" required>
+        <span ng-show="registration.password.$touched && registration.password.$invalid" style="color:red"> Password is Required</span>
+        <span style="color:red" ng-show="(registration.password.$error.pattern&&!(registration.password.$touched && studentForm.password.$invalid))">Password should not blank space.</span>       
+    </div><br><br>
+
+    <div>
+        <button ng-disabled="!registration.$valid" ng-click="login()"> LOGIN </button>
+    </div>
+
+
+    <div>
+     <p> Don't have an account?<a href="#/signup">SignUP</a> </p>
+         </div>
+         </form>
+                  
+              
+          
+        </body>
+        
+   
+        
+        
+      
+        
+ 
+    
+    
+    
+
+    
+

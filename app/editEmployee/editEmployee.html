@@ -1,0 +1,54 @@
+<body>
+        
+            <form name="registration" style="margin-left:35%;margin-top: 2%;" >
+                <br><br>
+                 <h3 style="color: darkslategray">Edt Employee Details</h3><br><br>
+                <div>
+                    Name :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="Employee Name" name="employeeName" ng-model="newRecord.employeeName" ng-pattern="/^[a-zA-Z\s]+$/" ng-maxlength="15" ng-minlength="2"required>
+                    <span ng-show="registration.employeeName.$touched && registration.employeeName.$error.required" style="color:red">Company name is required.</span>
+                    <span ng-show="registration.employeeName.$dirty && registration.employeeName.$error.pattern" style="color:red">No numbers and special charecter are allowed</span>
+                    <span style="color:red" ng-show="registration.employeeName.$error.maxlength">It must be up to 15 characters</span>
+                    <span style="color:red" ng-show="registration.employeeName.$error.minlength && !(registration.employeeName.$error.pattern)">It should be more than 1 character</span><br>  
+                </div>
+                <br><br>
+      
+                <div>
+                    E-Mail :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="email" name="email" ng-model="newRecord.email"
+                    placeholder="Email Address*" ng-pattern="/^([a-zA-Z0-9_\-\./]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,4})$/" ng-maxlength="30" required>
+                    <span ng-show="registration.email.$touched && registration.email.$error.required" style="color:red">Email is required.</span>                  
+                    <span ng-show="registration.email.$dirty && registration.email.$error.pattern" style="color:red">The Email Id is invalid.</span>
+                    <span style="color:red" ng-show="registration.email.$error.maxlength">It must be up to 30 characters</span><br>
+                </div>
+                <br><br>
+      
+                <div>
+                  Age :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="age" placeholder="Age" ng-model="newRecord.age" ng-pattern="/^[1-9][0-9]?$/"  ng-minlength="1" ng-maxlength="2" required>
+                  <span style = "color:red" ng-show = "registration.age.$dirty && registration.age.$invalid">  
+                  <span ng-show = "registration.age.$error.required">Age is required.</span></span> 
+                  <span style = "color:red" ng-show = "registration.age.$error.pattern &&!(registration.age.$error.maxlength) ">Please Enter valid Age !!</span> 
+                  <span style = "color:red" ng-show = "registration.age.$error.maxlength "> It can be maximum of 2 digits</span> 
+                  <!-- <span style = "color:red" ng-show = "registration.age.$error.minlength"> It can be minimum of 1 digits</span>  -->
+              </div>
+              <br><br>
+              <div >
+                  Date Of Joining :<input type="date" name="doj" ng-model="newRecord.doj" max="{{currentDay | date:'yyyy-MM-dd'}}" placeholder="Date of Birth*" required>
+                  <span ng-show="registration.dob.$touched && registration.dob.$invalid" style="color:red">The Date of Birth is required.</span>
+              </div>
+              <br><br>
+      
+              <div >
+                Address :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="address" placeholder="Please enter Address" g-places-autocomplete ng-model="newRecord.address"required/>
+                 <span style="color:red" ng-show="registration.address.$touched && registration.address.$invalid">
+                 <span ng-show="registration.address.$error.required">Address is required.</span>
+             </div>
+             <br><br>
+      
+                
+      
+                <div>
+                    <button ng-disabled="!registration.$valid" ng-click="update()"> Update</button>
+                </div>
+                
+               
+            </form>
+      </body>

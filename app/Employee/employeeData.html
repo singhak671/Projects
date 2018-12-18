@@ -1,0 +1,47 @@
+<head>
+    
+  <style>
+table, td, th {    
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 15px;
+}
+</style>
+</head>
+<button type="button" ng-click="back()" style="margin-top:3%;margin-left:3%">Back</button><br>
+<h1 style="text-align: center;color: darkslategray ">Employee List</h1><br><br>
+
+<a href="#/addEmployee"><i class="fa fa-user-plus" style="margin-left: 90%;font-size:40px">Add</i></a>
+
+<br>
+<br>
+
+    <table ng-controller="employeeDataCtrl" border="1">
+        <tr>
+            <td>EMPLOYEE NAME</td>
+            <td>EMAIL</td>
+            <td>AGE</td>
+            <td>ADDRESS</td>
+            <td>DOJ</td>
+            <td>EDIT</td>
+            <td>DELETE</td>
+        </tr>
+        <tr ng-repeat="x in record">
+            <td>{{x.employeeName}}</td>
+            <td>{{x.email}}</td>
+            <td>{{x.age}}</td>
+            <td>{{x.address}}</td>
+            <td>{{x.doj}}</td>
+            <td><button type="button" ng-click="edit(x._id)">Edit</button></td>
+            <td><button type="button" ng-click="delete(x._id)">Delete</button></td>
+        </tr>
+    </table>
+    

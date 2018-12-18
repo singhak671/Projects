@@ -1,0 +1,58 @@
+<head>
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    
+        <form name="registration" style="margin-left:35%;margin-top: 2%;">
+            <h1 style="color: darkslategray">Signup Form</h1>
+            <br><br>
+            <div>
+                Company Name :<input type="text" placeholder="Please Enter Company Name" name="companyName" ng-model="user.companyName" ng-pattern="/^[a-zA-Z\s]+$/" ng-maxlength="15" ng-minlength="2"required>
+                <span ng-show="registration.companyName.$touched && registration.companyName.$error.required" style="color:red">Company name is required.</span>
+                <span ng-show="(registration.companyName.$dirty && registration.companyName.$error.pattern)" style="color:red">No numbers and special charecter are allowed</span>
+                <span style="color:red" ng-show="(registration.companyName.$error.maxlength&&!(registration.companyName.$error.pattern))">It must be up to 15 characters</span>
+                <span style="color:red" ng-show="(registration.companyName.$error.minlength && !(registration.companyName.$error.pattern))">It should be more than 1 character</span>
+            </div>
+            <br><br>
+
+            <div>
+                E-Mail:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="email" name="email" ng-model="user.email"
+                placeholder="Email Address*" ng-pattern="/^([a-zA-Z0-9_\-\./]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,4})$/" ng-maxlength="30" required>
+                <span ng-show="registration.email.$touched && registration.email.$error.required" style="color:red">Email is required.</span>                  
+                <span ng-show="registration.email.$dirty && registration.email.$error.pattern" style="color:red">The Email Id is invalid.</span>
+                <span style="color:red" ng-show="registration.email.$error.maxlength">It must be up to 30 characters</span><br>
+            </div><br><br>
+              <div >
+               Address: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="address" placeholder="Please enter Address" g-places-autocomplete ng-model="user.address"required/>
+                <span style="color:red" ng-show="registration.address.$touched && registration.address.$invalid">
+                <span ng-show="registration.address.$error.required">Address is required.</span>
+            </div>
+            <br><br>
+            
+            <div >
+                Password :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password"  name="password" placeholder="Password*" ng-model="user.password" ng-pattern="/^\S*$/" ng-minlength="8" ng-maxlength="16" required>                   
+                <span ng-show="registration.password.$touched && registration.password.$invalid" style="color:red"> Password is Required</span>
+                <span style="color:red" ng-show="registration.password.$error.pattern">Password should not blank space.</span>
+                <span style="color:red" ng-show="(registration.password.$error.maxlength && !(registration.password.$touched && registration.password.$invalid))">password must be between 8 to 16 characters!!</span>
+                <span style="color:red" ng-show="(registration.password.$error.minlength && !(registration.password.$touched && registration.password.$invalid))">password must be between 8 to 16 characters!!</span>
+            </div>
+            <br><br>
+            <div>
+                Confirm Password :<input type="password"  name="confirmpassword" placeholder=" Confirm Password*" ng-model="confirmpassword" ng-pattern={{user.password}}  ng-disabled="!registration.password.$valid" ng-minlength="8" ng-maxlength="16" required>
+                <span ng-show="registration.confirmpassword.$touched && registration.confirmpassword.$invalid" style="color:red">Confirm Password is Required</span>
+                
+                <span style = "color:red"  ng-show = "registration.confirmpassword.$error.pattern">Password not matched!!</span>
+            </div>
+            <br><br>
+
+               
+                <button ng-disabled="!registration.$valid" ng-click="signup()" style="margin-left:">SignUp </button>
+            
+            <div>
+                <p> Already have an account? <a href="#/login">Login</a> </p>
+            </div>
+        </form>
+    
+</body>
